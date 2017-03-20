@@ -1,24 +1,9 @@
-# README
+# SETUP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+git clone https://github.com/Mziserman/insta_started
+cd insta_started
+bundle install
+rails s
 
-Things you may want to cover:
+localhost:3000
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
