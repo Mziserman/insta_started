@@ -1,0 +1,71 @@
+// Place all the styles related to the app controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// *= require_self
+// *= require ./variables.scss
+// *= require font-awesome
+@import "variables";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: $light-grey;
+	font-family: 'Nunito', sans-serif;
+	color: $black;
+	h1 {
+		text-align: center;
+		font-size: $font-big;
+		width: 100%;
+		color: $pink;
+	}
+	
+	header {
+		height: 10em;
+    	padding: 2.5em;
+	}
+
+	.product_card_container {
+		padding: 0 10px;
+		margin-bottom: 20px;
+		.product_card {
+		    background-color: white;
+			overflow: hidden;
+			border-radius: 10px;
+			box-shadow: 0 0 20px $shadow-grey;
+			.information_container {
+				padding: 0 20px;
+				.site {
+					font-size: $font-medium;
+					color: $grey;
+					margin-top: 15px;
+					text-align: right;
+				}
+				.price {
+					font-size: $font-big;
+					color: $pink;
+				}
+				.name {
+					font-size: $font-big;
+					color: $black;
+				}
+			}
+		}
+	}
+	.title_container {
+		margin-top: 50%;
+	}
+	img {
+		width: 100%;
+	}
+
+	.looks_container {
+		padding: 0 10px;
+		.picture_container {
+			padding: 10px;
+		}
+	}
+}

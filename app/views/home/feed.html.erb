@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <%= react_component 'Main', { looks: @looks } %>
+</div>
+
+<script>
+  // var app = new Clarifai.App(
+  //   'tnR5Q_NUO1TAxbWc-JIefyHc3X5n6apgmPjd6Lt3',
+  //   'kVv56U1eBkig-fnfS-K7BzlSCf0MDGSXXlrVWCPv'
+  // );
+
+  // var liked_content = $('.liked_content');
+  // picts_src = []
+  // liked_content.each(function(i, pict) {
+  //   picts_src.push(pict.src)
+  // });
+
+  // predict(picts_src, function(response) {
+  //   var concepts = response.rawData.outputs.map((e) => {
+  //     return e.data.concepts;
+  //   })
+  //   liked_products = concepts.map((concept) => {
+  //     var max = 0;
+  //     var product = "";
+  //     concept.map((c) => {
+  //       if (c.value > max) {
+  //         max = c.value;
+  //         product = c.name
+  //       }
+  //     })
+
+  //     return {name: product, value: max}
+  //   })
+  //   showResult(concepts)
+  // })
+
+  // function showResult(concepts) {
+    
+
+  //   var counts = {};
+  //   for (i = 0; i < liked_products.length; i++) {
+  //     counts[liked_products[i].name] = counts[liked_products[i].name] ? counts[liked_products[i].name] += 1 : 1
+  //   }
+  //   for (var i = 0; i < Object.keys(counts).length; i++) {
+  //     $.ajax({
+  //       url: 'api/v1/products/find.json',
+  //       type: 'GET',
+  //       data: { name: Object.keys(counts)[i] },
+
+  //       success: (response) => {
+  //         console.log(response)
+  //       }
+  //     })
+  //   }
+  // }
+
+
+  // function predict(urls, cb) {
+  //   app.models.predict("adidas", urls).then(
+  //     function(response) {
+  //       cb(response)
+  //     },
+  //     function(err) {
+  //       // there was an error
+  //     }
+  //   );
+  // }
+
+</script>
+
+
+<!-- 
+app.models.predict(Clarifai.GENERAL_MODEL, "http://www.adidas.fr/dis/dw/image/v2/aagl_prd/on/demandware.static/-/Sites-adidas-products/default/dw37d4f4b3/zoom/C77124_01_standard.jpg?sw=2000&sfrm=jpg").then(
+    function(response) {
+      console.log(response.outputs[0].data.concepts)
+    },
+    function(err) {
+      // there was an error
+    }
+  );
+ -->
