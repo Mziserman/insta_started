@@ -20,7 +20,7 @@ var Main = React.createClass({
 
 	getConceptsFromClarifaiResponse(response) {
 		return response.outputs[0].data.concepts.filter((concept) => {
-			return concept.value > 0.2
+			return concept.value > 0.4
 		})
 	},
 
