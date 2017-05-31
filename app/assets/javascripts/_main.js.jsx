@@ -6,15 +6,31 @@ var Main = React.createClass({
 		)
 	},
 
+	componentDidMount() {
+		$.ajax({
+			url: '/api/v1/users/find_basket.json',
+			type: 'GET',
+			data: { user_id: this.props.user_id },
+
+			success: (response) => {
+				this.setState({ basket: response })
+			}
+		})
+		
+	},
+
 	getInitialState() {
 		return {
 			title: 'Tous mes likes instagram',
 			isFeedActive: true,
 			isProductListActive: false,
 			isProductDetailActive: false,
+			isBasketActive: false,
 			loading: false,
 			products: [],
-			selectedProduct: {}
+			selectedProduct: {},
+			history: ["FEED"],
+			basket: [],
 		};
 	},
 
@@ -38,23 +54,86 @@ var Main = React.createClass({
 		
 	},
 
-
-
-	goToProductList() {
+	goToProductList(back = false) {
+		if (!back) {
+			var history = this.state.history
+			history.push("PRODUCT_LIST");
+			this.setState({ history: history })
+		} 
 		this.setState({ 
 			title: "Les produits associés au look",
+			isBasketActive: false,
 			isFeedActive: false,
 			isProductDetailActive: false,
-			isProductListActive: true
+			isProductListActive: true,
 		})
+		
 	},
 
-	goToProductDetail() {
+	goToProductDetail(back = false) {
+		if (!back) {
+			var history = this.state.history;
+			history.push("PRODUCT_DETAIL");
+			this.setState({ history: history });
+		} 
+		console.log(this.state.history)
 		this.setState({ 
 			isFeedActive: false,
+			isBasketActive: false,
 			isProductListActive: false,
 			isProductDetailActive: true
 		})
+	},
+
+	goToFeed(back = false) {
+		if (!back) {
+			var history = this.state.history;
+			history.push("FEED");
+			this.setState({ history: history });
+		} 
+		this.setState({ 
+			title: "Tous mes likes instagram",
+			isBasketActive: false,
+			isProductListActive: false,
+			isProductDetailActive: false,
+			isFeedActive: true,
+		})
+	},
+
+	goToBasket(back = false) {
+		if (!back) {
+			var history = this.state.history;
+			history.push("BASKET");
+			this.setState({ history: history });
+		}; 
+		this.setState({ 
+			title: "Mon panier",
+			isProductListActive: false,
+			isProductDetailActive: false,
+			isFeedActive: false,
+			isBasketActive: true,
+		});
+	},
+
+	handleBack() {
+		var history = this.state.history;
+		var page = history.pop();
+		switch(history[history.length - 1]) {
+			case "FEED":
+				this.goToFeed(true);
+				break;
+			case "PRODUCT_DETAIL":
+				this.goToProductDetail(true);
+				break;
+			case "PRODUCT_LIST":
+				this.goToProductList(true);
+				break;
+			case "BASKET":
+				this.goToBasket(true);
+				break;
+			default:
+
+		}
 	},
 
 	handleFeedClick(url) {
@@ -74,25 +153,43 @@ var Main = React.createClass({
 	},
 	
 	handleProductListClick(product) {
-		this.goToProductDetail()
+		this.goToProductDetail();
 		this.setState({
 			selectedProduct: product,
 			title: product.name
 		});
 	},
 
-	setHeader(title) {
-		this.setState({ title: title })
+	handleAddToCart() {
+		this.setState({ loading: true })
+		$.ajax({
+			url: '/api/v1/users/add_to_cart.json',
+			type: 'POST',
+			data: {
+				user_id: this.props.user_id, 
+				product_id: this.state.selectedProduct.id
+			},
+
+			success: (response) => {
+				this.setState({
+					basket: response,
+					loading: false
+				});
+				this.goToBasket();
+			}
+		})
+		
 	},
 
 	render() {
 		return (
 			<div>
 				<Loader loading={this.state.loading} />
-				<Header title={this.state.title} />
+				<Header 
+					title={this.state.title} 
+					handleBack={this.handleBack} />
 				<Feed 
 					looks={this.props.looks} 
-					setHeader={this.setHeader} 
 					handleClick={this.handleFeedClick}
 					active={this.state.isFeedActive} />
 				<ProductList
@@ -101,7 +198,12 @@ var Main = React.createClass({
 					handleClick={this.handleProductListClick} />
 				<ProductDetail
 					product={this.state.selectedProduct}
+					handleClick={this.handleAddToCart}
 					active={this.state.isProductDetailActive} />
+				<Basket
+					basket={this.state.basket}
+					handleClick={this.handlePurchase}
+					active={this.state.isBasketActive} />
 			</div>
 		) 
 	}

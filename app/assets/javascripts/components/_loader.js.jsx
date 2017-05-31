@@ -5,7 +5,5 @@ var Loader = React.createClass({
 				LOADING
 			</div>
 		)
-	} 
-		
-
+	}
 })

@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   layout "home"
   def index
-    $cb_url = "https://cb-insta-api.herokuapp.com/oauth/callback"
+    $cb_url = "http://localhost:3000/oauth/callback"
 
     Instagram.configure do |config|
       config.client_id = "9597dd3193e8461e9dfd07d2fc11bdeb"

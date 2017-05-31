@@ -9,4 +9,4 @@
 
 Product.create(name: "stan smith", price: "55.00 €", site: "asos.com", picture: "http://media.laredoute.com/products2/641by641/9/1/c/500019057_1010_CO_1_1200.jpg")
 Product.create(name: "gazelle", price: "99.99 €", site: "H&M.fr", picture: "http://media.3suisses.fr/arcadia/visuels/41/4134/264874134-zoom_prd_3s.jpg")
-Product.create(name: "superstar", price: "59.95 €", site: "asos.com", picture: "http://8512ea0a.nuajik.io/media/catalog/product/cache/1/image/540x/9df78eab33525d08d6e5fb8d27136e95/3/a/3a6eb7389eb766f31282a5cf7435a94bcf1a04a1d0fcf0035cb0e8da6caee08e.jpg")
+Product.create(name: "superstar", price: "59.95 €", site: "asos.com", picture: "http://demandware.edgesuite.net/sits_pod14-adidas/dw/image/v2/aagl_prd/on/demandware.static/-/Sites-adidas-products/default/dw37d4f4b3/zoom/C77124_01_standard.jpg?sw=500&sfrm=jpg")

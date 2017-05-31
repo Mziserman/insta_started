@@ -28,6 +28,37 @@ body {
     	padding: 2.5em;
 	}
 
+
+	.site {
+		font-size: $font-medium;
+		color: $grey;
+		margin-top: 15px;
+		text-align: right;
+	}
+	.price {
+		font-size: $font-big;
+		color: $pink;
+	}
+	.name {
+		font-size: $font-big;
+		color: $black;
+	}
+	.btn_container {
+		width: 100%;
+		text-align: center;
+		.btn {
+			font-size: 2.3em;
+			-webkit-border-radius: 450px;
+			-moz-border-radius: 450px;
+			border-radius: 450px;
+			font-family: Arial;
+			color: #FFF;
+			background: #F46DA0;
+			padding: 30px 50px 30px 50px;
+			text-decoration: none;
+		}
+	}
+
 	.product_card_container {
 		padding: 0 10px;
 		margin-bottom: 20px;
@@ -38,20 +69,6 @@ body {
 			box-shadow: 0 0 20px $shadow-grey;
 			.information_container {
 				padding: 0 20px;
-				.site {
-					font-size: $font-medium;
-					color: $grey;
-					margin-top: 15px;
-					text-align: right;
-				}
-				.price {
-					font-size: $font-big;
-					color: $pink;
-				}
-				.name {
-					font-size: $font-big;
-					color: $black;
-				}
 			}
 		}
 	}
@@ -66,6 +83,69 @@ body {
 		padding: 0 10px;
 		.picture_container {
 			padding: 10px;
+		}
+	}
+
+	.product_detail {
+		.site {
+			text-align: center;
+		}
+		.price {
+			text-align: center;
+		}
+		.img_container {
+			overflow: hidden;
+			border-radius: 10px;
+			box-shadow: 0 0 20px $shadow-grey;
+			margin: 0 20px;
+		}
+		.buy {
+			margin-top: 20px;
+			text-align: center;	
+			font-size: $font-big;
+			color: white;
+			width: 120px;
+			height: 120px;
+			border-radius: 100%;
+			background-color: $pink;
+
+		    line-height: 120px;
+		    text-align: center;
+		    vertical-align: bottom;
+		}
+	}
+
+	.basket {
+		.product_horizontal {
+			margin: 0 20px 20px 20px;
+			height: 300px;
+		    background-color: white;
+			overflow: hidden;
+			border-radius: 10px;
+			box-shadow: 0 0 20px $shadow-grey;
+			display: flex;
+			.information_container {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+			}
+			p {
+				position: relative;
+				margin: 0 20px;
+				.site {
+					position: absolute;
+					right: 0;
+				}
+			}
+
+			img {
+				display: inline-flex;
+				width: auto;
+				height: 100%;
+			}
+
+
 		}
 	}
 }
